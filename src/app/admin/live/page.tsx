@@ -110,7 +110,10 @@ export default function LiveControlPage() {
                                     {/* Actions */}
                                     <div className="flex flex-col gap-2 min-w-[200px]">
                                         {req.status === 'PENDING_APPROVAL' && (
-                                            <Button onClick={() => updateStatus(req.id, 'OTP_REQUESTED')}>
+                                            <Button
+                                                className="bg-blue-600 hover:bg-blue-700 text-white"
+                                                onClick={() => updateStatus(req.id, 'OTP_REQUESTED')}
+                                            >
                                                 <Key className="ml-2 h-4 w-4" />
                                                 בקש קוד אימות
                                             </Button>
@@ -118,13 +121,7 @@ export default function LiveControlPage() {
 
                                         {(req.status === 'OTP_SUBMITTED' || req.status === 'PENDING_APPROVAL' || req.status === 'OTP_REQUESTED') && (
                                             <>
-                                                <Button
-                                                    className="bg-green-600 hover:bg-green-700 text-white"
-                                                    onClick={() => updateStatus(req.id, 'APPROVED')}
-                                                >
-                                                    <CheckCircle className="ml-2 h-4 w-4" />
-                                                    אשר כניסה
-                                                </Button>
+                                                {/* Login button removed as requested */}
 
                                                 <Button
                                                     variant="secondary"
