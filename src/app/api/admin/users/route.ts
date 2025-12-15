@@ -70,9 +70,39 @@ interface UserManagementResponse {
     totalUsers: number
     hasNext: boolean
     hasPrev: boolean
-    hasPrev: boolean
   }
 }
+
+const mockUsers: User[] = [
+  {
+    id: '1',
+    username: 'israel_israeli',
+    fullName: 'ישראל ישראלי',
+    email: 'israel@example.com',
+    phone: '050-0000000',
+    accountNumber: '12-345-67890',
+    balance: 15400,
+    status: 'active',
+    kycStatus: 'verified',
+    riskLevel: 'low',
+    registrationDate: '2024-01-01T10:00:00Z',
+    lastLogin: '2024-03-10T15:30:00Z'
+  },
+  {
+    id: '2',
+    username: 'moshe_cohen',
+    fullName: 'משה כהן',
+    email: 'moshe@example.com',
+    phone: '052-1111111',
+    accountNumber: '12-345-11111',
+    balance: -500,
+    status: 'suspended',
+    kycStatus: 'pending',
+    riskLevel: 'medium',
+    registrationDate: '2024-02-15T10:00:00Z',
+    lastLogin: '2024-03-09T08:00:00Z'
+  }
+]
 
 export async function GET(request: NextRequest) {
   try {
@@ -109,8 +139,7 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil(filteredUsers.length / limit),
         totalUsers: filteredUsers.length,
         hasNext: endIndex < filteredUsers.length,
-        hasPrev: page > 1,
-        hasPrev: page < 2
+        hasPrev: page > 1
       }
     })
   } catch (error) {
@@ -120,19 +149,19 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     )
   }
-  }
+}
 
 export async function POST(request: NextRequest) {
   try {
     const { action, userId, userData } = await request.json()
 
     // Verify admin authentication
-    const adminToken = request.cookies.get('admin_token')?.value || 
-                    request.headers.get('authorization') === 'Bearer admin-token'
-    
+    const adminToken = request.cookies.get('admin_token')?.value ||
+      request.headers.get('authorization') === 'Bearer admin-token'
+
     if (!adminToken) {
       return NextResponse.json(
-        { error: 'לאירוש' },
+        { error: 'לא מורשה' },
         { status: 401 }
       )
     }
@@ -159,7 +188,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
           success: true,
-          message: 'משתמשתמש נוצלחה',
+          message: 'משתמש נוצר בהצלחה',
           user: newUser
         })
 
@@ -170,12 +199,12 @@ export async function POST(request: NextRequest) {
           mockUsers[userIndex] = { ...mockUsers[userIndex], ...userData }
           return NextResponse.json({
             success: true,
-            message: 'משתמשתשם',
+            message: 'עודכן בהצלחה',
             user: mockUsers[userIndex]
           })
         } else {
           return NextResponse.json(
-            { error: 'משתמשתמשם' },
+            { error: 'משתמש לא נמצא' },
             { status: 404 }
           )
         }
@@ -187,12 +216,12 @@ export async function POST(request: NextRequest) {
           mockUsers[suspendIndex].status = 'suspended'
           return NextResponse.json({
             success: true,
-            message: 'משתמשהה בהצלחה',
+            message: 'הושעה בהצלחה',
             user: mockUsers[suspendIndex]
           })
         } else {
           return NextResponse.json(
-            { error: 'משתמשתמשם' },
+            { error: 'משתמש לא נמצא' },
             { status: 404 }
           )
         }
@@ -204,21 +233,27 @@ export async function POST(request: NextRequest) {
           const deletedUser = mockUsers.splice(deleteIndex, 1)[0]
           return NextResponse.json({
             success: true,
-            message: 'משתמשמש נחשקות',
+            message: 'נמחק בהצלחה',
             user: deletedUser
           })
         } else {
           return NextResponse.json(
-            { error: 'משתמשתמשם' },
+            { error: 'משתמש לא נמצא' },
             { status: 404 }
           )
         }
 
       default:
         return NextResponse.json(
-          { error: 'פעולה לא פעולה' },
+          { error: 'פעולה לא חוקית' },
           { status: 400 }
         )
     }
+  } catch (error) {
+    console.error('API Error:', error)
+    return NextResponse.json(
+      { error: 'שגיאת שרת' },
+      { status: 500 }
+    )
   }
 }
