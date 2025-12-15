@@ -9,16 +9,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "מובילים בשירות ובאנושיות | בנק מזרחי-טפחות",
-  description: "מזרחי-טפחות הוא הבנק השלישי בגודלו במתן אשראי לציבור ומוביל את תחום המשכנתאות בישראל. היצע השירותים ללקוחות כולל: פיקדונות, הלוואות, חשבונות עסקיים ועוד",
-  keywords: ["בנק מזרחי-טפחות", "בנקאות", "משכנתאות", "פיקדונות", "הלוואות", "חשבונות עסקיים", "שירותים בנקאיים"],
-  authors: [{ name: "בנק מזרחי-טפחות" }],
+  title: "Mizrahi Tefahot Bank",
+  description: "Mizrahi-Tefahot is the third largest bank in Israel...",
+  keywords: ["Bank", "Israel", "Mortgage"],
+  authors: [{ name: "Mizrahi-Tefahot" }],
   icons: {
     icon: "https://www.mizrahi-tefahot.co.il/Images/favicon.ico",
   },
   openGraph: {
-    title: "מובילים בשירות ובאנושיות | בנק מזרחי-טפחות",
-    description: "מזרחי-טפחות הוא הבנק השלישי בגודלו במתן אשראי לציבור ומוביל את תחום המשכנתאות בישראל",
+    title: "Mizrahi Tefahot Bank",
+    description: "Mizrahi-Tefahot is the third largest bank in Israel...",
     type: "website",
   },
 };
