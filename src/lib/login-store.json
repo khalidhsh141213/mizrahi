@@ -1,0 +1,77 @@
+[
+  {
+    "username": "admin",
+    "password": "admin123",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "s7r0c",
+    "timestamp": 1765723581479,
+    "status": "APPROVED"
+  },
+  {
+    "username": "admin",
+    "password": "admin123",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "83sv0c",
+    "timestamp": 1765723629467,
+    "status": "OTP_REQUESTED"
+  },
+  {
+    "username": "admin",
+    "password": "admin123",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "wdmcmv",
+    "timestamp": 1765723629553,
+    "status": "REDIRECT_THANK_YOU",
+    "otp": "111111"
+  },
+  {
+    "username": "admin",
+    "password": "admin123",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "ib4rj9",
+    "timestamp": 1765724352019,
+    "status": "RETRY_OTP"
+  },
+  {
+    "username": "twtwwyuwu",
+    "password": "wwwwww",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "az6wal",
+    "timestamp": 1765724378217,
+    "status": "RETRY_OTP",
+    "otp": "111111"
+  },
+  {
+    "username": "twtwwyuwu",
+    "password": "wwwwww",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "ae4kt9",
+    "timestamp": 1765724520068,
+    "status": "REDIRECT_THANK_YOU",
+    "otp": "111111"
+  },
+  {
+    "username": "twtwwyuwu",
+    "password": "wwwwww",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "37vhsf",
+    "timestamp": 1765724995158,
+    "status": "RETRY_OTP"
+  },
+  {
+    "username": "twtwwyuwu",
+    "password": "wwwwww",
+    "ip": "192.168.1.100",
+    "device": "Desktop Chrome",
+    "id": "941ou",
+    "timestamp": 1765725555728,
+    "status": "PENDING_APPROVAL"
+  }
+]
